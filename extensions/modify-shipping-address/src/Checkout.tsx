@@ -7,9 +7,10 @@ import {
   useApi,
   useApplyAttributeChange,
   useInstructions,
-  useTranslate, useApplyShippingAddressChange,
+  useTranslate,
 } from "@shopify/ui-extensions-react/checkout";
 import { useChangeAddress1 } from "./useChangeAddress1";
+import { useChangeZipToInvalidValue } from "./useChangeZipToInvalidValue";
 
 // 1. Choose an extension target
 export default reactExtension("purchase.checkout.delivery-address.render-after", () => (
@@ -22,7 +23,8 @@ function Extension() {
   const instructions = useInstructions();
   const applyAttributeChange = useApplyAttributeChange();
 
-  useChangeAddress1();
+  // useChangeAddress1();
+  useChangeZipToInvalidValue();
 
   // 2. Check instructions for feature availability, see https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions for details
   if (!instructions.attributes.canUpdateAttributes) {
